@@ -4,6 +4,8 @@
 
 Script arguments support changing the server and a persistent authentication over HTTP BASIC.
 """
+import os
+from sys import exit
 
 try:
     import configparser
@@ -18,10 +20,8 @@ from getpass import getpass
 from jira import __version__
 from jira import JIRA
 from oauthlib.oauth1 import SIGNATURE_RSA
-import os
 import requests
 from requests_oauthlib import OAuth1
-from sys import exit
 
 import webbrowser
 
@@ -255,6 +255,7 @@ def main():
         banner1='<JIRA Shell ' + __version__ + ' (' + jira.client_info() + ')>')
     ipshell("*** JIRA shell active; client is in 'jira'."
             ' Press Ctrl-D to exit.')
+
 
 if __name__ == '__main__':
     status = main()
