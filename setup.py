@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
+from pip import req
 import setuptools
 from setuptools.command.test import test as TestCommand
 import sys
-from pip import req
 
 # In python < 2.7.4, a lazy loading of package `pbr` will break
 # setuptools if some other modules registered functions in `atexit`.
@@ -36,7 +36,7 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 setuptools.setup(
-    setup_requires=['pbr>=1.9', 'setuptools>=17.1', 'pytest-runner', 'pip'],
+    setup_requires=['setuptools>=20.10.1', 'pytest-runner', 'pip', 'pbr>=1.9'],
     install_requires=install_requires,
     tests_require=tests_require,
     pbr=True,

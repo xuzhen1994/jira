@@ -1,6 +1,7 @@
 # The order of packages is significant, because pip processes them in the order
 # of appearance. Changing the order has an impact on the overall integration
 # process, which may cause wedges in the gate later.
+setuptools>=20.10.1
 pbr
 
 ordereddict; python_version < '3.1'
@@ -9,6 +10,5 @@ pip
 requests-oauthlib>=0.6.1
 requests>=2.10.0
 requests_toolbelt
-setuptools>=20.10.1
 six>=1.10.0
 defusedxml
