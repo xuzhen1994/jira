@@ -1168,14 +1168,14 @@ class IssueTests(unittest.TestCase):
         transitions = []
         for issue in [self.issue_2, self.jira.issue(self.issue_2)]:
             transitions = self.jira.transitions(issue)
-            self.assertTrue(transitions)
-            self.assertTrue('id' in transitions[0])
-            self.assertTrue('name' in transitions[0])
+            self.assertTrue(transitions, msg="Expecting at least one transition for %s" % issue)
+            self.assertTrue('id' in transitions[0] and 'name' in transitions[0],
+                            msg="Unexpected data: %s" % transitions)
 
         self.assertTrue(transitions, msg="Expecting at least one transition")
         # we test getting a single transition
         transition = self.jira.transitions(self.issue_2, transitions[0]['id'])[0]
-        self.assertDictEqual(transition, transitions[0])
+        self.assertDictEqual(transition, transitions[0], msg="issue %s : %s" % (self.issue_2, transitions))
 
         # we test the expand of fields
         transition = self.jira.transitions(self.issue_2, transitions[0]['id'],
